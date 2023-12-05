@@ -1,7 +1,7 @@
 {
   "name": "abp-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "ABP-REACT is a versatile React library that provides convenient tools and utilities for integrating with the ABP (ASP.NET Boilerplate) framework in your React applications.",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -11,8 +11,14 @@
   "files": [
     "dist"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "abp",
+    "react",
+    "asp.net",
+    "asp.net boilerplate",
+    "abp boilerplate"
+  ],
+  "author": "Alexander Yordanov",
   "license": "ISC",
   "dependencies": {
     "@types/react": "^17.0.0",
