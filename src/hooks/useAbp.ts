@@ -1,5 +1,9 @@
+import { useContext } from 'react';
 import { abp } from '../lib/abp';
+import { ApplicationContext } from '../context/applicationContext';
 
 export const useAbp = () => {
-  return abp;
+  const { isLoading } = useContext(ApplicationContext);
+
+  return { abp, isLoading };
 };

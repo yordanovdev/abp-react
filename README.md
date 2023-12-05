@@ -51,6 +51,7 @@ Access ABP instance and its functionalities using the useAbp hook.
 ```javascript
 function MyComponent() {
   const abpInstance = useAbp();
+  const { abp, isLoading } = abpInstance;
 
   // Use abpInstance methods and properties
 }
@@ -101,8 +102,8 @@ function logoutUser() {
 ```
 
 ### 5. Localization
-Access localization resources using the L function.
 
+Access localization resources using the L function.
 
 ```javascript
 function MyLocalizedComponent() {
@@ -116,13 +117,12 @@ We recommend overriding the "L" function so it would be easier to use.
 
 ```javascript
 function customL(key) {
-    const sourceName = process.env.SOURCE_NAME;
+  const sourceName = process.env.SOURCE_NAME;
 
-    return L(key, sourceName);
+  return L(key, sourceName);
 }
 ```
 
 ### Contribution
+
 Feel free to contribute to the abp-react library. Fork the repository, make your changes, and submit a pull request. Your contributions are highly appreciated!
-
-
