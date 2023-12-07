@@ -1,17 +1,17 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 import { abp } from '../../lib/abp';
 import { IUser, UserContext } from '../../context/userContext';
 import { fetchConfiguration, fetchUser } from '../../helpers/wrapper';
-import { ApplicationContext } from '../../context/applicationContext';
 
 interface IWrapperProps {
   baseUrl: string;
   tenantId?: number;
+  fallback: NonNullable<ReactNode> | null;
 }
 
 export const AbpWrapper: React.FC<IWrapperProps> = (props) => {
   const [loading, setLoading] = useState(true);
-  const { children, baseUrl, tenantId } = props;
+  const { children, baseUrl, tenantId, fallback } = props;
 
   const [user, setUser] = useState<IUser | null>(null);
 
@@ -25,32 +25,21 @@ export const AbpWrapper: React.FC<IWrapperProps> = (props) => {
       'Abp.TenantId': tenantId,
     };
 
-    (async () => {
-      await Promise.all([
-        await fetchConfiguration(baseUrl, headers),
-        await fetchUser(baseUrl, setUser, headers),
-      ]);
-
+    Promise.all([
+      fetchConfiguration(baseUrl, headers),
+      fetchUser(baseUrl, setUser, headers),
+    ]).then(() => {
       setLoading(false);
-    })();
+    });
   }, []);
 
   const userContextValue = useMemo(() => {
     return { user: user };
   }, [user]);
 
-  const applicationContextValue = useMemo(() => {
-    return {
-      abp: abp,
-      isLoading: loading,
-    };
-  }, [loading, abp]);
-
   return (
     <UserContext.Provider value={userContextValue}>
-      <ApplicationContext.Provider value={applicationContextValue}>
-        {children}
-      </ApplicationContext.Provider>
+      {loading ? fallback : children}
     </UserContext.Provider>
   );
 };

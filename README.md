@@ -21,12 +21,12 @@ import { L } from 'abp-react';
 
 #### 2. Initializing the App
 
-A. With AbpWrapper wrap your main application component with AbpWrapper to enable ABP integration.
+A. With AbpWrapper wrap your main application component with AbpWrapper to enable ABP integration. Pass a fallback function to be seen while loading the configuration from ASP.NET Boilerplate.
 
 ```javascript
 function App() {
   return (
-    <AbpWrapper baseUrl="your base url">
+    <AbpWrapper baseUrl="your base url" fallback={<Loading />}>
       {/* Your application components */}
     </AbpWrapper>
   );
@@ -51,7 +51,7 @@ Access ABP instance and its functionalities using the useAbp hook.
 ```javascript
 function MyComponent() {
   const abpInstance = useAbp();
-  const { abp, isLoading } = abpInstance;
+  const { abp } = abpInstance;
 
   // Use abpInstance methods and properties
 }
