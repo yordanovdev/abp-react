@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 import { abp } from '../../lib/abp';
-import { IUser, UserContext } from '../../context/userContext';
+import { UserContext } from '../../context/userContext';
 import { fetchConfiguration, fetchUser } from '../../helpers/wrapper';
 
 interface IWrapperProps {
@@ -13,7 +13,7 @@ export const AbpWrapper: React.FC<IWrapperProps> = (props) => {
   const [loading, setLoading] = useState(true);
   const { children, baseUrl, tenantId, fallback } = props;
 
-  const [user, setUser] = useState<IUser | null>(null);
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     if (!baseUrl) throw Error('Base url is not specified');

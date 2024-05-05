@@ -11,3 +11,5 @@ export { login, clearAuthCookies } from './helpers/authentication';
 
 //Localization
 export { L } from './utils/localization';
+
+export type { IUser } from './context/userContext';

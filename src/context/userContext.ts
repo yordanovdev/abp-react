@@ -9,7 +9,7 @@ export interface IUser {
 }
 
 type IUserContext = {
-  user: IUser | null;
+  user: any;
 };
 
 export const UserContext = createContext<IUserContext>({
