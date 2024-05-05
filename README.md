@@ -64,11 +64,13 @@ Should only be used inside "AbpWrapper" component
 
 ```javascript
 function UserProfile() {
-  const user = useUser();
+  const user = useUser<MyUserType>();
 
   // Access user information
 }
 ```
+
+For simplicity you can create an abstraction over the useUser hook. If no user type is provided useUser will return ANY.
 
 ### 4. Authentication
 
