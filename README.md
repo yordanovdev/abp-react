@@ -14,7 +14,7 @@ npm install abp-react
 
 ```javascript
 import { abp, AbpWrapper, initialiseApp } from 'abp-react';
-import { useAbp, useUser } from 'abp-react';
+import { useAbp, useAbpUser } from 'abp-react';
 import { login, clearAuthCookies } from 'abp-react';
 import { L } from 'abp-react';
 ```
@@ -57,20 +57,20 @@ function MyComponent() {
 }
 ```
 
-#### useUser
+#### useAbpUser
 
-Retrieve information about the current user with the useUser hook.
+Retrieve information about the current user with the useAbpUser hook.
 Should only be used inside "AbpWrapper" component
 
 ```javascript
 function UserProfile() {
-  const user = useUser<MyUserType>();
+  const user = useAbpUser<MyUserType>();
 
   // Access user information
 }
 ```
 
-For simplicity you can create an abstraction over the useUser hook. If no user type is provided useUser will return ANY.
+For simplicity you can create an abstraction over the useAbpUser hook. If no user type is provided useAbpUser will return ANY.
 
 ### 4. Authentication
 

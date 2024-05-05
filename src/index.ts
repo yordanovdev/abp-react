@@ -4,7 +4,7 @@ export { initialiseApp } from './utils/init';
 
 //Hooks
 export { useAbp } from './hooks/useAbp';
-export { useUser } from './hooks/useUser';
+export { useAbpUser } from './hooks/useAbpUser';
 
 //Authentication
 export { login, clearAuthCookies } from './helpers/authentication';
