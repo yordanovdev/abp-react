@@ -10,8 +10,12 @@ export interface IUser {
 
 type IUserContext = {
   user: any;
+  refetchConfiguration: () => Promise<void>;
+  refetchUser: () => Promise<void>;
 };
 
 export const UserContext = createContext<IUserContext>({
   user: null,
+  refetchUser: () => Promise.resolve(),
+  refetchConfiguration: () => Promise.resolve(),
 });

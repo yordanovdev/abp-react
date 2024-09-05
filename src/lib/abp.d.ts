@@ -70,7 +70,11 @@ export declare namespace abp {
 
     let abpWeb: (key: string) => string;
 
-    function localize(key: string, sourceName: string): string;
+    function localize(
+      key: string,
+      sourceName: string,
+      ...others: string[]
+    ): string;
 
     function getSource(sourceName: string): (...key: string[]) => string;
 
